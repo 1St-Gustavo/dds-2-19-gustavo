@@ -1,0 +1,22 @@
+try {
+            // TODO add your handling code here:
+            Connection conexao = null;
+            PreparedStatement statement = null;
+
+            String url = "jdbc:mysql://localhost:3306/nomedoseubanco";
+            String usuario = "root";
+            String senha = "";
+
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "UPDATE  nomedatabela SET  cpf= ?, nome= ? where id = ? ";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, jTextField2.getText());
+            statement.setString(2, jTextField3.getText());
+            statement.setString(3, jTextField1.getText());
+            statement.executeUpdate();
+            System.out.println("atualizou");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }                       
